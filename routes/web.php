@@ -8,11 +8,16 @@ Route::prefix('/student')->controller(StudentController::class)->group(function 
     Route::get('/create', 'home')->name('Homepage');
     Route::post('/create/post', 'create')->name('SubmitData');
     // Read
-    Route::get('/View','Read')->name('ViewPage');
+    Route::get('/View','Read')->name('ViewPage')->middleware('check1');
     //Update
     Route::get('/View/Update/{id}','UpdateView')->name('UpdateViewPage');
     Route::post('/View/Update/{id}','Update')->name('UpdatePage');
     //Delete
     Route::get('/View/delete/{id}','delete')->name('Deletepage');
 
+    //User Api
+    Route::get('/user','getuser')->name('UserPage');
+
 });
+
+

@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
-use function PHPUnit\Framework\isArray;
+
 
 class StudentController extends Controller
 {
@@ -19,7 +20,7 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|min:3|max:25',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:students,email,' . $request->id,
             'gender' => 'required',
             'skill' => 'required|array',
             'domain' => 'required'
@@ -52,7 +53,7 @@ class StudentController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|min:3|max:25',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:students,email,' . $id,
             'gender' => 'required',
             'skill' => 'required|array',
             'domain' => 'required'
@@ -73,6 +74,14 @@ class StudentController extends Controller
         $students = Student::find($id);
         $students->delete();
         return redirect()->route('ViewPage')->with('success', 'Student has been successfully Deleted.');
+    }
 
+
+    // User Api
+    function getuser(){
+        $response = Http:: get('https://dummyjson.com/users');
+        $users = $response->json()['users'];
+        print_r($users);
+        return view('pages.users',compact('users'));
     }
 }

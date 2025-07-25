@@ -54,19 +54,19 @@
 
 <div class="mb-3">
     <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Javascript" name="skill[]" >
+  <input class="form-check-input" type="checkbox" value="Javascript" name="skill[]"  {{ old('skill') === "Javascript" ? 'selected' : '' }} >
   <label class="form-check-label" >
     Javascript
   </label>
 </div>
   <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Laravel" name="skill[]" >
+  <input class="form-check-input" type="checkbox" value="Laravel" name="skill[]"  {{ old('skill') === "Laravel" ? 'selected' : '' }}>
   <label class="form-check-label" >
     Laravel
   </label>
 </div>
  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="PHP" name="skill[]" >
+  <input class="form-check-input" type="checkbox" value="PHP" name="skill[]"  {{ old('skill') === "PHP" ? 'selected' : '' }}>
   <label class="form-check-label" >
     PHP
   </label>
@@ -78,5 +78,7 @@
   <button type="submit" class="btn btn-primary fw-semibold w-100">Submit</button>
 </form>
 <a href="{{route('ViewPage')}}" class="btn btn-success fw-semibold  w-25  mt-2 ">View Data</a>
+<a href="{{route('UserPage')}}" class="btn btn-primary fw-semibold  w-25  mt-2 ">User Data</a>
+
 
 @endsection
