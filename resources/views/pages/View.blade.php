@@ -3,7 +3,7 @@
 @section('app')
      <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
     <h2 class="mb-0 text-left flex-grow-1">Student Information Data</h2>
-    <a href="{{route('Homepage')}}" class="btn btn-primary ms-3">Add Student</a>
+    <a href="{{route('createpage')}}" class="btn btn-primary ms-3">Add Student</a>
 </div>
   @if (session('success'))
   <div class="alert alert-success">{{session('success')}}</div>       
@@ -17,6 +17,7 @@
       <th scope="col">Gender</th>
       <th scope="col">Field</th>
       <th scope="col">Skill</th>
+      <th scope="col">Image</th>
       <th scope="col">Edit</th>
       <th scope="col">Delete</th>
 
@@ -32,6 +33,9 @@
             <td>{{$student->gender}}</td>
             <td>{{$student->domain}}</td>
             <td>{{$student->skill}}</td>
+             <td>
+      <img src="{{ asset('storage/'  .  $student->image)}}" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+    </td>
               <td><a  href="{{route('UpdateViewPage',$student->id)}}"  class="btn btn-success">Edit</a></td>
        <td><a href="{{route('Deletepage',$student->id)}}" class="btn btn-danger">Delete</a></td>
 
@@ -42,3 +46,9 @@
 </table>
     
 @endsection
+{{-- @php
+    use Illuminate\Support\Facades\Auth;
+    $user = Auth::user();
+@endphp
+
+<h4>Welcome, {{ Auth::user()->name ?? 'Guest' }}</h4> --}}

@@ -6,6 +6,7 @@
   
         <form method="POST" action="{{route('UpdatePage',$students->id)}}" >
         @csrf
+        @method('PUT')
   <div class="mb-3">
     <label  class="form-label">Name</label>
     <input type="text" name="name" value="{{old('name',$students->name)}}" class="form-control" >

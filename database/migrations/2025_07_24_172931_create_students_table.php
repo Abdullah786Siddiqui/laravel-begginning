@@ -20,6 +20,7 @@ return new class extends Migration
             $table->json('skill');
             $table->enum('gender', ['male', 'female']);
             $table->string('domain');
+            $table->string('image');
             $table->timestamps();
         });
     }

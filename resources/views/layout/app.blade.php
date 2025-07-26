@@ -8,7 +8,7 @@
   </head>
   <body style="background-color: whitesmoke">
     {{-- Navbar --}}
-    @include('includes.header')
+    @include('includes.header') 
     
   <main class="container">
    @yield('app')

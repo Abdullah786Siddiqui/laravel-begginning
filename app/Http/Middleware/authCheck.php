@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class ageCheck
+class authCheck
 {
     /**
      * Handle an incoming request.
@@ -16,12 +17,9 @@ class ageCheck
     public function handle(Request $request, Closure $next): Response
     {
 
-
-        $age = 19;
-        if ($age < 18) {
-            return redirect()->route('Homepage')->with('success', 'you have not acces View page beacase your age is under 18');
+        if (!Auth::check()) {
+            return redirect()->route('LoginPage');
         }
-
         return $next($request);
     }
 }

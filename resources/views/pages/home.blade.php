@@ -1,84 +1,44 @@
 @extends('layout.app')
-
-
 @section('app')
-    <h1 class="text-center mt-2">Student Information Form</h1>
-    @if (session('success'))
+ @if (session('success'))
   <div class="alert alert-success">{{session('success')}}</div>       
     @endif
-        <form method="POST" action="{{route('SubmitData')}}" >
-        @csrf
-  <div class="mb-3">
-    <label  class="form-label">Name</label>
-    <input type="text" name="name"  value="{{old('name')}}"class="form-control" >
-    @error('name')
-    <div class="text-danger">{{$message}}</div>  
-    @enderror
-  </div>
-  <div class="mb-3">
-    <label  class="form-label">Email</label>
-    <input type="email" name="email" value="{{old('email')}}" class="form-control" >
-     @error('email')
-    <div class="text-danger">{{$message}}</div>  
-    @enderror
-  </div>
-  <div class="mb-3">
-    <div class="form-check">
-  <input class="form-check-input" type="radio" name="gender" value="Male" {{old('gender') === "Male" ? 'checked' : ''}} >
-  <label class="form-check-label" >
-    Male
-  </label>
-</div>
- <div class="form-check">
-  <input class="form-check-input" type="radio" name="gender" value="Female"  {{old('gender') === "Female" ? 'checked' : ''}}>
-  <label class="form-check-label" >
-    Female
-  </label>
-</div>
-  @error('gender')
-    <div class="text-danger">{{$message}}</div>  
-    @enderror
-  </div>
-  <div class="mb-3">
-   <select class="form-select" name="domain">
-  <option disabled selected>Select Field</option>
-  <option value="Computer Science" {{ old('domain') === "Computer Science" ? 'selected' : '' }}>Computer Science</option>
-  <option value="Software Engineering" {{ old('domain') === "Software Engineering" ? 'selected' : '' }}>Software Engineering</option>
-  <option value="BBA" {{ old('domain') === "BBA" ? 'selected' : '' }}>BBA</option>
-</select>
-
- @error('domain')
-    <div class="text-danger">{{$message}}</div>  
-    @enderror
+  <!-- Hero Section -->
+<div class="container mt-5">
+    <div class="p-5 bg-primary text-white rounded shadow-sm text-center">
+        <h1 class="display-4">Welcome to Student Management</h1>
+        <p class="lead">Manage your students efficiently and effortlessly.</p>
+        <a href="{{route('createpage')}}" class="btn btn-light btn-lg mt-3">+ Create New Student</a>
+    </div>
 </div>
 
-<div class="mb-3">
-    <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Javascript" name="skill[]"  {{ old('skill') === "Javascript" ? 'selected' : '' }} >
-  <label class="form-check-label" >
-    Javascript
-  </label>
-</div>
-  <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Laravel" name="skill[]"  {{ old('skill') === "Laravel" ? 'selected' : '' }}>
-  <label class="form-check-label" >
-    Laravel
-  </label>
-</div>
- <div class="form-check">
-  <input class="form-check-input" type="checkbox" value="PHP" name="skill[]"  {{ old('skill') === "PHP" ? 'selected' : '' }}>
-  <label class="form-check-label" >
-    PHP
-  </label>
-</div>
- @error('skill')
-    <div class="text-danger">{{$message}}</div>  
-    @enderror
-  </div>
-  <button type="submit" class="btn btn-primary fw-semibold w-100">Submit</button>
-</form>
-<a href="{{route('ViewPage')}}" class="btn btn-success fw-semibold  w-25  mt-2 ">View Data</a>
-<a href="{{route('UserPage')}}" class="btn btn-primary fw-semibold  w-25  mt-2 ">User Data</a>
+<!-- Info Cards -->
+<div class="container mt-5">
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Why Use This System?</h5>
+                    <p class="card-text">
+                        Easily organize, view, and update student records in one centralized system. Ideal for schools and institutions.
+                    </p>
+                </div>
+            </div>
+        </div>
 
+        <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Key Features</h5>
+                    <ul class="mb-0">
+                        <li>Create, Edit, and Delete Students</li>
+                        <li>Store fields like skills, domains, and gender</li>
+                        <li>Clean & responsive UI</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
